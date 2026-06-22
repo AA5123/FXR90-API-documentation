@@ -1,0 +1,36 @@
+{
+  "type": "object",
+  "x-stoplight": {
+    "id": "x3kzpuyewquvx"
+  },
+  "description": "Retrieves the supported regulatory standards and channel settings for the requested region.",
+  "examples": [
+    {
+      "command": "get_supportedStandardList",
+      "command_id": "sdgf",
+      "payload": {
+        "region": "Argentina"
+      }
+    }
+  ],
+  "properties": {
+    "command": {
+      "type": "string",
+      "example": "get_supportedStandardList",
+      "description": "The value for the key command must be get_supportedStandardList",
+      "enum": [
+        "get_supportedStandardList"
+      ]
+    },
+    "command_id": {
+      "type": "string",
+      "enum": [
+        "sdgf"
+      ],
+      "description": "A unique ID that will be echoed back in the command response by the reader."
+    },
+    "payload": {
+      "$ref": "../../references/request_payload/get_Supportedstandardlist_command.yaml"
+    }
+  }
+}

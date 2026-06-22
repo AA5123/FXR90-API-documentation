@@ -1,0 +1,142 @@
+title: get_bleConfig_response
+type: object
+properties:
+  ble:
+    type: object
+    properties:
+      enable:
+        type: boolean
+        example: true
+      scanIntervalSec:
+        type: integer
+        example: 5
+      additionalFilters:
+        type: object
+        properties:
+          rssi:
+            type: integer
+            example: -80
+          serviceUuids16:
+            type: array
+            items:
+              type: string
+          serviceUuids128:
+            type: array
+            items:
+              type: string
+      protocols:
+        type: object
+        properties:
+          iBeacon:
+            type: object
+            properties:
+              enabled:
+                type: boolean
+              filters:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    uuid:
+                      type: string
+                      description: Proximity UUID
+                    major:
+                      type: integer
+                      description: Major value
+                    minor:
+                      type: integer
+                      description: Minor value
+                    txPower:
+                      type: integer
+                      description: TX power / calibrated RSSI at 1m
+          altBeacon:
+            type: object
+            properties:
+              enabled:
+                type: boolean
+              filters:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    mfgId:
+                      type: string
+                      description: Manufacturer ID (hex string)
+                    beaconId:
+                      type: string
+                      description: Beacon ID (UUID string)
+                    major:
+                      type: integer
+                      description: Major value
+                    minor:
+                      type: integer
+                      description: Minor value
+                    refRssi:
+                      type: integer
+                      description: Reference RSSI (TX power at 1m)
+          eddystone:
+            type: object
+            properties:
+              enabled:
+                type: boolean
+              filters:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    frameType:
+                      type: string
+                      enum:
+                      - URL
+                      - UID
+                      - EID
+                      - TLM
+                      description: Eddystone frame type
+                    txPower:
+                      type: integer
+                      description: TX power at 0m
+                    url:
+                      type: string
+                      description: Advertised URL (Eddystone-URL only)
+                    namespace:
+                      type: string
+                      description: 10-byte namespace hex string (Eddystone-UID only)
+                    instance:
+                      type: string
+                      description: 6-byte instance ID hex string (Eddystone-UID only)
+                    ephemeralId:
+                      type: string
+                      description: 8-byte ephemeral ID hex string (Eddystone-EID only)
+                description: Filter by Eddystone frame fields. Use `frameType` to
+                  target a specific frame type (URL, UID, EID).
+          generic:
+            type: object
+            properties:
+              enabled:
+                type: boolean
+              filters:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    address:
+                      type: string
+                      description: Bluetooth device address to match.
+                    addressType:
+                      type: string
+                      enum:
+                      - public
+                      - random
+                      description: Bluetooth address type to match.
+                    name:
+                      type: string
+                      description: Device name to match.
+                    alias:
+                      type: string
+                      description: Device alias to match.
+                description: List of filter objects for GENERIC_BLE beacons.
+            description: Configuration for GENERIC_BLE beacons. Filters match on device-level
+              advertisement fields.
+        description: Protocol-specific BLE scanner configurations.
+required:
+- ble

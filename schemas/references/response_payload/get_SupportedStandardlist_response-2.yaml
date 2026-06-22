@@ -1,0 +1,55 @@
+title: success
+type: object
+description: Retrieves the supported regulatory standards and channel settings for
+  a region.
+properties:
+  SupportedStandards:
+    type: array
+    description: Supported regulatory standards and channel settings for the requested
+      region.
+    items:
+      type: object
+      examples:
+      - &id001
+        StandardName: ARGENTINA
+        channeldata:
+        - '915750'
+        - '915250'
+        - '903250'
+        isChannelSelectable: false
+        isHoppingConfigurable: false
+        isLBTConfigurable: false
+      properties:
+        StandardName:
+          type: string
+          description: Regulatory standard name supported for the requested region.
+          example: ARGENTINA
+        channeldata:
+          type: array
+          description: Channel list supported by the regulatory standard.
+          items:
+            type: string
+          example:
+          - '915750'
+          - '915250'
+          - '903250'
+        isChannelSelectable:
+          type: boolean
+          description: Whether channels can be selected for this regulatory standard.
+          example: false
+          default: false
+        isHoppingConfigurable:
+          type: boolean
+          description: Whether frequency hopping can be configured for this regulatory
+            standard.
+          example: false
+          default: false
+        isLBTConfigurable:
+          type: boolean
+          description: Whether Listen Before Talk (LBT) can be configured for this
+            regulatory standard.
+          example: false
+          default: false
+examples:
+- SupportedStandards:
+  - *id001

@@ -1,0 +1,11 @@
+title: Get Network Interfaces Response Payload
+type: object
+description: Contains the available network interfaces reported by the reader.
+properties:
+  availableNetworkInterfaces:
+    type: array
+    description: Available network interface names reported by the reader.
+    items:
+      type: string
+required:
+- availableNetworkInterfaces

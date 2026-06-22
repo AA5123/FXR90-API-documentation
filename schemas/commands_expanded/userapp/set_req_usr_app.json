@@ -1,0 +1,76 @@
+{
+  "title": "Send Command to User app",
+  "x-stoplight": {
+    "id": "ftuwxbp4gq66e"
+  },
+  "type": "object",
+  "description": "Sends the specified command to the specified user application",
+  "properties": {
+    "command": {
+      "type": "string",
+      "enum": [
+        "set_req_usr_app"
+      ],
+      "example": "set_req_usr_app",
+      "description": "The value for the key command must be set_req_usr_app"
+    },
+    "command_id": {
+      "type": "string",
+      "example": "abcd13212",
+      "description": "A unique ID that will be echoed back in the command response by the reader."
+    },
+    "payload": {
+      "description": "Send request to userapp",
+      "type": "object",
+      "title": "set_reqToUserapp",
+      "properties": {
+        "userapp": {
+          "type": "string",
+          "minLength": 1,
+          "description": "User application name. For REST, the application is identified by the appname path parameter; for MQTT, the application is identified by the userapp payload field.",
+          "example": "sample"
+        },
+        "command": {
+          "type": "object",
+          "description": "Command object to send to the user application.",
+          "properties": {
+            "message": {
+              "type": "string",
+              "description": "Message value to send to the user application.",
+              "example": "hello"
+            }
+          }
+        }
+      },
+      "required": [
+        "userapp",
+        "command"
+      ],
+      "examples": [
+        {
+          "userapp": "sample",
+          "command": {
+            "message": "hello"
+          }
+        }
+      ]
+    }
+  },
+  "required": [
+    "command",
+    "command_id",
+    "payload"
+  ],
+  "examples": [
+    {
+      "command": "set_req_usr_app",
+      "command_id": "abcd1234",
+      "payload": {
+        "userapp": "sample",
+        "command": {
+          "message": "hello"
+        }
+      }
+    }
+  ]
+}

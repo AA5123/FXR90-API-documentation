@@ -1,0 +1,27 @@
+title: GPI Event
+type: object
+description: 'GPI Event
+
+  '
+properties:
+  pin:
+    type: number
+    description: GPI pin number
+    minimum: 1
+    maximum: 4
+    example: 2
+    enum:
+    - 1
+    - 2
+    - 3
+    - 4
+  state:
+    type: string
+    enum:
+    - HIGH
+    - LOW
+    example: LOW
+    description: GPI pin state
+required:
+- pin
+- state

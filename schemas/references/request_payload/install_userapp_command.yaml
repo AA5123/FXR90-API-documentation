@@ -1,0 +1,43 @@
+title: set_installUserapp
+type: object
+description: Install userapp debian package
+properties:
+  authenticationType:
+    type: string
+    description: 'Authentication method used by the file server. Allowed values: NONE,
+      BASIC.'
+    enum:
+    - NONE
+    - BASIC
+    example: BASIC
+  filename:
+    type: string
+    description: User application package filename on the file server.
+    example: mylogger_1.0.1.deb
+  url:
+    type: string
+    description: URL of the file server location that hosts the package files.
+    example: sftp://10.117.229.15/home/labuser/EV1/
+  authenticationOptions:
+    type: object
+    description: BASIC authentication credentials for the file server.
+    properties:
+      username:
+        type: string
+        description: Username for BASIC authentication.
+        example: labuser
+      password:
+        type: string
+        description: Password for BASIC authentication.
+        example: L@bu$3rs
+required:
+- url
+- filename
+- authenticationType
+examples:
+- authenticationType: BASIC
+  filename: mylogger_1.0.1.deb
+  url: sftp://10.117.229.15/home/labuser/EV1/
+  authenticationOptions:
+    username: labuser
+    password: L@bu$3rs

@@ -1,0 +1,62 @@
+{
+  "title": "get_supportedStandardList_response",
+  "type": "object",
+  "properties": {
+    "command": {
+      "type": "string",
+      "enum": [
+        "get_supportedStandardList"
+      ],
+      "description": "The value for the key command must be get_supportedStandardList",
+      "example": "get_supportedStandardList"
+    },
+    "command_id": {
+      "type": "string"
+    },
+    "response": {
+      "type": "string",
+      "enum": [
+        "success",
+        "failure"
+      ]
+    },
+    "payload": {
+      "oneOf": [
+        {
+          "$ref": "../../references/response_payload/get_SupportedStandardlist_response-2.yaml"
+        },
+        {
+          "$ref": "../../references/response_payload/errors.yaml"
+        }
+      ]
+    }
+  },
+  "required": [
+    "command",
+    "command_id",
+    "response"
+  ],
+  "description": "Represents the supported regulatory standards and channel settings for the requested region.",
+  "examples": [
+    {
+      "command": "get_supportedStandardList",
+      "command_id": "gfdd",
+      "payload": {
+        "SupportedStandards": [
+          {
+            "StandardName": "ARGENTINA",
+            "channeldata": [
+              "915750",
+              "915250",
+              "903250"
+            ],
+            "isChannelSelectable": false,
+            "isHoppingConfigurable": false,
+            "isLBTConfigurable": false
+          }
+        ]
+      },
+      "response": "success"
+    }
+  ]
+}

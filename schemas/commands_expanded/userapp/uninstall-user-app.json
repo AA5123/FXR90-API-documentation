@@ -1,0 +1,43 @@
+{
+  "title": "Uninstall User App",
+  "x-stoplight": {
+    "id": "7zoy6hlqsuz0y"
+  },
+  "type": "object",
+  "description": "Uninstalls the specified user app",
+  "properties": {
+    "command": {
+      "type": "string",
+      "enum": [
+        "uninstall-user-app"
+      ],
+      "example": "uninstall-user-app",
+      "description": "The value for the key command must be uninstall-user-app"
+    },
+    "command_id": {
+      "type": "string",
+      "example": "abcd134",
+      "description": "A unique ID that will be echoed back in the command response by the reader."
+    },
+    "payload": {
+      "title": "set_uninstallUserapp",
+      "type": "object",
+      "properties": {
+        "appname": {
+          "type": "string",
+          "description": "Application name. For REST, the application is identified by the appname path parameter; for MQTT, the application is identified by the appname payload field.",
+          "example": "sample"
+        }
+      },
+      "required": [
+        "appname"
+      ],
+      "description": "uninstall userapp"
+    }
+  },
+  "required": [
+    "command",
+    "command_id",
+    "payload"
+  ]
+}

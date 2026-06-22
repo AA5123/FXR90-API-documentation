@@ -1,0 +1,309 @@
+{
+  "title": "Get BLE Configuration Response",
+  "type": "object",
+  "description": "Returns the current BLE scanner configuration.",
+  "properties": {
+    "command": {
+      "type": "string",
+      "example": "get_bleConfig",
+      "description": "The value for the key command must be get_bleConfig",
+      "enum": [
+        "get_bleConfig"
+      ]
+    },
+    "command_id": {
+      "type": "string",
+      "example": "ble-get-001",
+      "description": "A unique ID that will be echoed back in the command response by the reader."
+    },
+    "response": {
+      "type": "string",
+      "enum": [
+        "success",
+        "failure"
+      ],
+      "example": "success"
+    },
+    "payload": {
+      "oneOf": [
+        {
+          "title": "get_bleConfig_response",
+          "type": "object",
+          "properties": {
+            "ble": {
+              "type": "object",
+              "properties": {
+                "enable": {
+                  "type": "boolean",
+                  "example": true
+                },
+                "scanIntervalSec": {
+                  "type": "integer",
+                  "example": 5
+                },
+                "additionalFilters": {
+                  "type": "object",
+                  "properties": {
+                    "rssi": {
+                      "type": "integer",
+                      "example": -80
+                    },
+                    "serviceUuids16": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "serviceUuids128": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                },
+                "protocols": {
+                  "type": "object",
+                  "properties": {
+                    "iBeacon": {
+                      "type": "object",
+                      "properties": {
+                        "enabled": {
+                          "type": "boolean"
+                        },
+                        "filters": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "uuid": {
+                                "type": "string",
+                                "description": "Proximity UUID"
+                              },
+                              "major": {
+                                "type": "integer",
+                                "description": "Major value"
+                              },
+                              "minor": {
+                                "type": "integer",
+                                "description": "Minor value"
+                              },
+                              "txPower": {
+                                "type": "integer",
+                                "description": "TX power / calibrated RSSI at 1m"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "altBeacon": {
+                      "type": "object",
+                      "properties": {
+                        "enabled": {
+                          "type": "boolean"
+                        },
+                        "filters": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "mfgId": {
+                                "type": "string",
+                                "description": "Manufacturer ID (hex string)"
+                              },
+                              "beaconId": {
+                                "type": "string",
+                                "description": "Beacon ID (UUID string)"
+                              },
+                              "major": {
+                                "type": "integer",
+                                "description": "Major value"
+                              },
+                              "minor": {
+                                "type": "integer",
+                                "description": "Minor value"
+                              },
+                              "refRssi": {
+                                "type": "integer",
+                                "description": "Reference RSSI (TX power at 1m)"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "eddystone": {
+                      "type": "object",
+                      "properties": {
+                        "enabled": {
+                          "type": "boolean"
+                        },
+                        "filters": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "frameType": {
+                                "type": "string",
+                                "enum": [
+                                  "URL",
+                                  "UID",
+                                  "EID",
+                                  "TLM"
+                                ],
+                                "description": "Eddystone frame type"
+                              },
+                              "txPower": {
+                                "type": "integer",
+                                "description": "TX power at 0m"
+                              },
+                              "url": {
+                                "type": "string",
+                                "description": "Advertised URL (Eddystone-URL only)"
+                              },
+                              "namespace": {
+                                "type": "string",
+                                "description": "10-byte namespace hex string (Eddystone-UID only)"
+                              },
+                              "instance": {
+                                "type": "string",
+                                "description": "6-byte instance ID hex string (Eddystone-UID only)"
+                              },
+                              "ephemeralId": {
+                                "type": "string",
+                                "description": "8-byte ephemeral ID hex string (Eddystone-EID only)"
+                              }
+                            }
+                          },
+                          "description": "Filter by Eddystone frame fields. Use `frameType` to target a specific frame type (URL, UID, EID)."
+                        }
+                      }
+                    },
+                    "generic": {
+                      "type": "object",
+                      "properties": {
+                        "enabled": {
+                          "type": "boolean"
+                        },
+                        "filters": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "address": {
+                                "type": "string",
+                                "description": "Bluetooth device address to match."
+                              },
+                              "addressType": {
+                                "type": "string",
+                                "enum": [
+                                  "public",
+                                  "random"
+                                ],
+                                "description": "Bluetooth address type to match."
+                              },
+                              "name": {
+                                "type": "string",
+                                "description": "Device name to match."
+                              },
+                              "alias": {
+                                "type": "string",
+                                "description": "Device alias to match."
+                              }
+                            }
+                          },
+                          "description": "List of filter objects for GENERIC_BLE beacons."
+                        }
+                      },
+                      "description": "Configuration for GENERIC_BLE beacons. Filters match on device-level advertisement fields."
+                    }
+                  },
+                  "description": "Protocol-specific BLE scanner configurations."
+                }
+              }
+            }
+          },
+          "required": [
+            "ble"
+          ]
+        },
+        {
+          "title": "failure",
+          "type": "object",
+          "description": "description of the error",
+          "examples": [
+            {
+              "code": 1,
+              "message": "invalid payload for version api. expected empty payload"
+            }
+          ],
+          "properties": {
+            "code": {
+              "type": "integer",
+              "description": "The error code",
+              "example": 1,
+              "enum": [
+                1,
+                2,
+                3,
+                6,
+                7
+              ]
+            },
+            "message": {
+              "type": "string",
+              "description": "A brief description of the error"
+            }
+          },
+          "required": [
+            "code",
+            "message"
+          ]
+        }
+      ]
+    }
+  },
+  "required": [
+    "command",
+    "command_id",
+    "payload",
+    "response"
+  ],
+  "examples": [
+    {
+      "command": "get_bleConfig",
+      "command_id": "ble-get-001",
+      "response": "success",
+      "payload": {
+        "ble": {
+          "enable": true,
+          "scanIntervalSec": 5,
+          "protocols": {
+            "iBeacon": {
+              "enabled": true,
+              "filters": [
+                {
+                  "uuid": "FDA50693-A4E2-4FB1-AFCF-C6EB07647825",
+                  "major": 10001,
+                  "minor": 20002,
+                  "txPower": -59
+                }
+              ]
+            }
+          },
+          "additionalFilters": {
+            "rssi": -80,
+            "serviceUuids16": [
+              "FEAA",
+              "FE9B"
+            ],
+            "serviceUuids128": [
+              "FDA50693-A4E2-4FB1-AFCF-C6EB07647825"
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

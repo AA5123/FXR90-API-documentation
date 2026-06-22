@@ -1,0 +1,3 @@
+title: get_gpoStatus
+type: object
+description: Retrieves the current GPO port states.

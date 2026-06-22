@@ -1,0 +1,31 @@
+title: Available Wi-Fi Networks Response Payload
+type: object
+description: Contains the list of available Wi-Fi networks visible to the reader.
+properties:
+  availableWifiNetworks:
+    type: array
+    description: Available Wi-Fi networks visible to the reader.
+    items:
+      type: object
+      properties:
+        capabilities:
+          type: array
+          description: Wi-Fi capabilities reported by the access point.
+          items:
+            type: string
+        configuration:
+          type: object
+          description: Saved reader configuration for the Wi-Fi network.
+          properties:
+            autoConnect:
+              type: boolean
+              description: Whether the reader is configured to automatically connect
+                to this network.
+        essid:
+          type: string
+          description: Wi-Fi network name.
+        signalStrength:
+          type: string
+          description: Wi-Fi signal strength reported by the reader.
+required:
+- availableWifiNetworks

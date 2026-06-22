@@ -1,0 +1,67 @@
+{
+  "title": "Get Region",
+  "x-stoplight": {
+    "id": "lmxizdjjhg0nt"
+  },
+  "type": "object",
+  "description": "Represents the active region and regulatory configuration.",
+  "examples": [
+    {
+      "command": "get_region",
+      "command_id": "a1b2c3345",
+      "payload": {
+        "FrequencyHopping": true,
+        "channelData": [
+          "915750",
+          "915250",
+          "903250"
+        ],
+        "country": "Canada",
+        "lbtEnabled": false,
+        "maxTxPowerSupported": 300,
+        "minTxPowerSupported": 0,
+        "region": "FCC_Generic",
+        "regulatoryStandard": "CANADA_FCC_15"
+      },
+      "response": "success"
+    }
+  ],
+  "properties": {
+    "command": {
+      "type": "string",
+      "enum": [
+        "get_region"
+      ],
+      "example": "get_region",
+      "description": "The value for the key command must be get_region"
+    },
+    "command_id": {
+      "type": "string",
+      "example": "a1b2c3345",
+      "description": "A unique ID that will be echoed back in the command response by the reader."
+    },
+    "response": {
+      "type": "string",
+      "enum": [
+        "success",
+        "failure"
+      ],
+      "example": "success"
+    },
+    "payload": {
+      "oneOf": [
+        {
+          "$ref": "../../references/response_payload/get_region_response-2.yaml"
+        },
+        {
+          "$ref": "../../references/response_payload/errors.yaml"
+        }
+      ]
+    }
+  },
+  "required": [
+    "command",
+    "command_id",
+    "response"
+  ]
+}

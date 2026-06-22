@@ -1,0 +1,170 @@
+{
+  "title": "get_supportedStandardList_response",
+  "type": "object",
+  "properties": {
+    "command": {
+      "type": "string",
+      "enum": [
+        "get_supportedStandardList"
+      ],
+      "description": "The value for the key command must be get_supportedStandardList",
+      "example": "get_supportedStandardList"
+    },
+    "command_id": {
+      "type": "string"
+    },
+    "response": {
+      "type": "string",
+      "enum": [
+        "success",
+        "failure"
+      ]
+    },
+    "payload": {
+      "oneOf": [
+        {
+          "title": "success",
+          "type": "object",
+          "description": "Retrieves the supported regulatory standards and channel settings for a region.",
+          "properties": {
+            "SupportedStandards": {
+              "type": "array",
+              "description": "Supported regulatory standards and channel settings for the requested region.",
+              "items": {
+                "type": "object",
+                "examples": [
+                  {
+                    "StandardName": "ARGENTINA",
+                    "channeldata": [
+                      "915750",
+                      "915250",
+                      "903250"
+                    ],
+                    "isChannelSelectable": false,
+                    "isHoppingConfigurable": false,
+                    "isLBTConfigurable": false
+                  }
+                ],
+                "properties": {
+                  "StandardName": {
+                    "type": "string",
+                    "description": "Regulatory standard name supported for the requested region.",
+                    "example": "ARGENTINA"
+                  },
+                  "channeldata": {
+                    "type": "array",
+                    "description": "Channel list supported by the regulatory standard.",
+                    "items": {
+                      "type": "string"
+                    },
+                    "example": [
+                      "915750",
+                      "915250",
+                      "903250"
+                    ]
+                  },
+                  "isChannelSelectable": {
+                    "type": "boolean",
+                    "description": "Whether channels can be selected for this regulatory standard.",
+                    "example": false,
+                    "default": false
+                  },
+                  "isHoppingConfigurable": {
+                    "type": "boolean",
+                    "description": "Whether frequency hopping can be configured for this regulatory standard.",
+                    "example": false,
+                    "default": false
+                  },
+                  "isLBTConfigurable": {
+                    "type": "boolean",
+                    "description": "Whether Listen Before Talk (LBT) can be configured for this regulatory standard.",
+                    "example": false,
+                    "default": false
+                  }
+                }
+              }
+            }
+          },
+          "examples": [
+            {
+              "SupportedStandards": [
+                {
+                  "StandardName": "ARGENTINA",
+                  "channeldata": [
+                    "915750",
+                    "915250",
+                    "903250"
+                  ],
+                  "isChannelSelectable": false,
+                  "isHoppingConfigurable": false,
+                  "isLBTConfigurable": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "failure",
+          "type": "object",
+          "description": "description of the error",
+          "examples": [
+            {
+              "code": 1,
+              "message": "invalid payload for version api. expected empty payload"
+            }
+          ],
+          "properties": {
+            "code": {
+              "type": "integer",
+              "description": "The error code",
+              "example": 1,
+              "enum": [
+                1,
+                2,
+                3,
+                6,
+                7
+              ]
+            },
+            "message": {
+              "type": "string",
+              "description": "A brief description of the error"
+            }
+          },
+          "required": [
+            "code",
+            "message"
+          ]
+        }
+      ]
+    }
+  },
+  "required": [
+    "command",
+    "command_id",
+    "response"
+  ],
+  "description": "Represents the supported regulatory standards and channel settings for the requested region.",
+  "examples": [
+    {
+      "command": "get_supportedStandardList",
+      "command_id": "gfdd",
+      "payload": {
+        "SupportedStandards": [
+          {
+            "StandardName": "ARGENTINA",
+            "channeldata": [
+              "915750",
+              "915250",
+              "903250"
+            ],
+            "isChannelSelectable": false,
+            "isHoppingConfigurable": false,
+            "isLBTConfigurable": false
+          }
+        ]
+      },
+      "response": "success"
+    }
+  ]
+}

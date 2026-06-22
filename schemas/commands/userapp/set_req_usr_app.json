@@ -1,0 +1,43 @@
+{
+  "title": "Send Command to User app",
+  "x-stoplight": {
+    "id": "ftuwxbp4gq66e"
+  },
+  "type": "object",
+  "description": "Sends the specified command to the specified user application",
+  "properties": {
+    "command": {
+      "type": "string",
+      "enum": [
+        "set_req_usr_app"
+      ],
+      "example": "set_req_usr_app",
+      "description": "The value for the key command must be set_req_usr_app"
+    },
+    "command_id": {
+      "type": "string",
+      "example": "abcd13212",
+      "description": "A unique ID that will be echoed back in the command response by the reader."
+    },
+    "payload": {
+      "$ref": "../../references/request_payload/request_userapp_command.yaml"
+    }
+  },
+  "required": [
+    "command",
+    "command_id",
+    "payload"
+  ],
+  "examples": [
+    {
+      "command": "set_req_usr_app",
+      "command_id": "abcd1234",
+      "payload": {
+        "userapp": "sample",
+        "command": {
+          "message": "hello"
+        }
+      }
+    }
+  ]
+}

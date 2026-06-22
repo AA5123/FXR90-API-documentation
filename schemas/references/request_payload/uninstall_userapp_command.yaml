@@ -1,0 +1,12 @@
+title: set_uninstallUserapp
+type: object
+properties:
+  appname:
+    type: string
+    description: Application name. For REST, the application is identified by the
+      appname path parameter; for MQTT, the application is identified by the appname
+      payload field.
+    example: sample
+required:
+- appname
+description: uninstall userapp

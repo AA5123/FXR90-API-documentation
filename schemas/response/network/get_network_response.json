@@ -1,0 +1,282 @@
+{
+  "title": "readerNetworkAll",
+  "type": "object",
+  "description": "Reader network information - All interfaces (interface=all parameter)",
+  "examples": [
+    {
+      "command": "get_network",
+      "command_id": "a12cb345654",
+      "response": "success",
+      "payload": {
+        "hostName": "FXR90C5F1AB",
+        "networkInterface": {
+          "eth0": {
+            "IPV4": {
+              "dhcp": true,
+              "dnsAddress": "10.233.1.200",
+              "domainName": "zlab.com",
+              "gatewayAddress": "10.233.45.2",
+              "ipAddress": "10.233.45.235",
+              "subnetMask": "255.255.255.0"
+            },
+            "IPV6": {
+              "dhcp": true,
+              "dnsAddress": "fd6c:10:233:1::201",
+              "domainName": "zlab.com",
+              "gatewayAddress": "fe80::f6ee:31ff:fe0c:5a1f",
+              "ipAddress": "fd6c:10:233:45:eab:f51f:957e:f729"
+            },
+            "Status": "connected",
+            "isEnabled": true,
+            "macAddress": "C8:1C:FE:C5:F1:AB"
+          },
+          "mlan0": {
+            "IPV4": {
+              "dhcp": true,
+              "dnsAddress": "1.1.1.1",
+              "domainName": "FXR90C5F1AB",
+              "gatewayAddress": "192.168.0.1",
+              "ipAddress": "192.168.0.201",
+              "subnetMask": "255.255.255.0"
+            },
+            "IPV6": {
+              "dhcp": true,
+              "dnsAddress": "fd6c:10:233:1::201",
+              "domainName": "FXR90C5F1AB",
+              "gatewayAddress": "fe80::c206:c3ff:febe:ee3c",
+              "ipAddress": "fe80::3626:9125:eda5:36d7"
+            },
+            "Status": "connected",
+            "accesspoint": {
+              "autoConn": false,
+              "essid": "GLaDOS",
+              "status": "connected",
+              "security": {
+                "securityType": "WPA2Personal"
+              }
+            },
+            "isEnabled": true,
+            "macAddress": "48:A4:93:BF:A9:50"
+          },
+          "bnep0": {
+            "Status": "active",
+            "deviceDiscoverableName": "FXR90C5F1AB",
+            "dhcpEndAddress": "192.168.0.10",
+            "dhcpStartAddress": "192.168.0.2",
+            "ipAddress": "192.168.241.171",
+            "isDiscoverable": true,
+            "isEnabled": true,
+            "isPairable": true,
+            "macAddress": "48:A4:93:BF:A9:52",
+            "passKey": "1234",
+            "subnetMask": "255.255.0.0",
+            "usePassKey": true
+          },
+          "wan0": {
+            "Status": "online",
+            "activeSim": "psim",
+            "isEnabled": true,
+            "psim": {
+              "currentDataClass": "LTE",
+              "currentServiceProvider": "Vi India",
+              "enableIPv6": false,
+              "enablePin": false,
+              "enableRoaming": false,
+              "highestAvailableDataClass": "LTE",
+              "internetAccess": true,
+              "packetServiceState": "Attached",
+              "preferredNetworkType": "AUTO",
+              "registerState": "Home",
+              "rsrp": "-103.7dBm",
+              "rsrq": "-5.5dB",
+              "rssi": "-82.7dBm",
+              "signalBar": 1,
+              "simState": "Initialized",
+              "snr": "0.0dB"
+            }
+          },
+          "uap0": {
+            "ssid": "FXR90Hotspot",
+            "ssidPassword": "MyP@ssword",
+            "isHidden": false,
+            "securityType": "WPA3Personal",
+            "Status": "active",
+            "isEnabled": true,
+            "macAddress": "48:A4:93:BF:A9:53",
+            "Clients": [
+              {
+                "hostName": "my-laptop",
+                "IP": "192.168.43.2",
+                "MAC": "AA:BB:CC:DD:EE:FF"
+              }
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "properties": {
+    "command": {
+      "type": "string",
+      "x-stoplight": {
+        "id": "39zra4osdjxd3"
+      },
+      "description": "The value for the key command must be get_network",
+      "example": "get_network"
+    },
+    "command_id": {
+      "type": "string",
+      "x-stoplight": {
+        "id": "0hqhaelyx60nk"
+      },
+      "description": "A unique ID that will be echoed back in the command response by the reader."
+    },
+    "response": {
+      "type": "string",
+      "x-stoplight": {
+        "id": "w1nijnw6fddu6"
+      },
+      "enum": [
+        "success",
+        "failure"
+      ]
+    },
+    "payload": {
+      "x-stoplight": {
+        "id": "63epxnm3j9nq4"
+      },
+      "oneOf": [
+        {
+          "$ref": "../../references/response_payload/get_network_response_all.yaml",
+          "x-stoplight": {
+            "id": "76fs3a2mjpcuy"
+          }
+        },
+        {
+          "$ref": "../../references/response_payload/errors.yaml",
+          "x-stoplight": {
+            "id": "fhqhf1pk0va4e"
+          }
+        }
+      ]
+    }
+  },
+  "required": [
+    "command",
+    "command_id",
+    "response"
+  ],
+  "x-examples": {
+    "example-1": {
+      "command": "get_network",
+      "command_id": "a12cb345654",
+      "response": "success",
+      "payload": {
+        "hostName": "FXR90C5F1AB",
+        "networkInterface": {
+          "eth0": {
+            "IPV4": {
+              "dhcp": true,
+              "dnsAddress": "10.233.1.200",
+              "domainName": "zlab.com",
+              "gatewayAddress": "10.233.45.2",
+              "ipAddress": "10.233.45.235",
+              "subnetMask": "255.255.255.0"
+            },
+            "IPV6": {
+              "dhcp": true,
+              "dnsAddress": "fd6c:10:233:1::201",
+              "domainName": "zlab.com",
+              "gatewayAddress": "fe80::f6ee:31ff:fe0c:5a1f",
+              "ipAddress": "fd6c:10:233:45:eab:f51f:957e:f729"
+            },
+            "Status": "connected",
+            "isEnabled": true,
+            "macAddress": "C8:1C:FE:C5:F1:AB"
+          },
+          "mlan0": {
+            "IPV4": {
+              "dhcp": true,
+              "dnsAddress": "1.1.1.1",
+              "domainName": "FXR90C5F1AB",
+              "gatewayAddress": "192.168.0.1",
+              "ipAddress": "192.168.0.201",
+              "subnetMask": "255.255.255.0"
+            },
+            "IPV6": {
+              "dhcp": true,
+              "dnsAddress": "fd6c:10:233:1::201",
+              "domainName": "FXR90C5F1AB",
+              "gatewayAddress": "fe80::c206:c3ff:febe:ee3c",
+              "ipAddress": "fe80::3626:9125:eda5:36d7"
+            },
+            "Status": "connected",
+            "accesspoint": {
+              "autoConn": false,
+              "essid": "GLaDOS",
+              "status": "connected",
+              "security": {
+                "securityType": "WPA2Personal"
+              }
+            },
+            "isEnabled": true,
+            "macAddress": "48:A4:93:BF:A9:50"
+          },
+          "bnep0": {
+            "Status": "active",
+            "deviceDiscoverableName": "FXR90C5F1AB",
+            "dhcpEndAddress": "192.168.0.10",
+            "dhcpStartAddress": "192.168.0.2",
+            "ipAddress": "192.168.241.171",
+            "isDiscoverable": true,
+            "isEnabled": true,
+            "isPairable": true,
+            "macAddress": "48:A4:93:BF:A9:52",
+            "passKey": "1234",
+            "subnetMask": "255.255.0.0",
+            "usePassKey": true
+          },
+          "wan0": {
+            "Status": "online",
+            "activeSim": "psim",
+            "isEnabled": true,
+            "psim": {
+              "currentDataClass": "LTE",
+              "currentServiceProvider": "Vi India",
+              "enableIPv6": false,
+              "enablePin": false,
+              "enableRoaming": false,
+              "highestAvailableDataClass": "LTE",
+              "internetAccess": true,
+              "packetServiceState": "Attached",
+              "preferredNetworkType": "AUTO",
+              "registerState": "Home",
+              "rsrp": "-103.7dBm",
+              "rsrq": "-5.5dB",
+              "rssi": "-82.7dBm",
+              "signalBar": 1,
+              "simState": "Initialized",
+              "snr": "0.0dB"
+            }
+          },
+          "uap0": {
+            "ssid": "FXR90Hotspot",
+            "ssidPassword": "MyP@ssword",
+            "isHidden": false,
+            "securityType": "WPA3Personal",
+            "Status": "active",
+            "isEnabled": true,
+            "macAddress": "48:A4:93:BF:A9:53",
+            "Clients": [
+              {
+                "hostName": "my-laptop",
+                "IP": "192.168.43.2",
+                "MAC": "AA:BB:CC:DD:EE:FF"
+              }
+            ]
+          }
+        }
+      }
+    }
+  }
+}

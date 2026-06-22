@@ -1,0 +1,36 @@
+type: array
+description: Retrive installed userapp status and details
+minItems: 1
+uniqueItems: true
+x-examples:
+  example-1:
+  - appname: sample
+    autostart: false
+    metadata: 'Package Name:sample<BR> Package Version: 1.0.0<BR> Status: install
+      user installed<BR> architecture: all'
+    runningStatus: true
+items:
+  type: object
+  properties:
+    appname:
+      type: string
+      minLength: 1
+      description: User application name.
+      example: sample
+    autostart:
+      type: boolean
+      default: true
+      description: Whether the user application is configured to start automatically.
+    metadata:
+      type: string
+      minLength: 1
+      description: User application metadata reported by the reader.
+    runningStatus:
+      type: boolean
+      description: Whether the user application is currently running.
+  required:
+  - appname
+  - autostart
+  - metadata
+  - runningStatus
+title: success

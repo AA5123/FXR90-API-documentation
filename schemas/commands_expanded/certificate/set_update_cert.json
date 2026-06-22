@@ -1,0 +1,153 @@
+{
+  "title": "Update Certificate",
+  "x-stoplight": {
+    "id": "gk4nxg46rugqz"
+  },
+  "type": "object",
+  "description": "Update the certificate on the reader.",
+  "properties": {
+    "command": {
+      "type": "string",
+      "enum": [
+        "set_updateCertificate"
+      ],
+      "example": "set_updateCertificate",
+      "description": "The value for the key command must be set_updateCertificate"
+    },
+    "command_id": {
+      "type": "string",
+      "example": "abcd1324",
+      "description": "A unique ID that will be echoed back in the command response by the reader."
+    },
+    "payload": {
+      "description": "Install or update a certificate on the reader by downloading a PFX file from a URL.",
+      "type": "object",
+      "x-examples": {
+        "example-1": {
+          "name": "reader",
+          "type": "client",
+          "url": "https://10.117.229.15/reader.pfx",
+          "authenticationType": "BASIC",
+          "authenticationOptions": {
+            "username": "zebra",
+            "password": "zebra"
+          },
+          "pfxPassword": "abcd12345"
+        }
+      },
+      "title": "set_updateCertificate",
+      "examples": [
+        {
+          "name": "reader",
+          "type": "client",
+          "url": "https://10.117.229.15/reader.pfx",
+          "authenticationType": "BASIC",
+          "authenticationOptions": {
+            "username": "zebra",
+            "password": "zebra"
+          },
+          "pfxPassword": "abcd12345"
+        }
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Certificate name on the reader.",
+          "example": "reader"
+        },
+        "type": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Certificate type. Allowed values: client, server, app.",
+          "enum": [
+            "client",
+            "server",
+            "app"
+          ],
+          "example": "client"
+        },
+        "url": {
+          "type": "string",
+          "minLength": 1,
+          "description": "URL where the certificate PFX file can be downloaded.",
+          "example": "https://10.117.229.15/reader.pfx"
+        },
+        "authenticationType": {
+          "type": "string",
+          "description": "Authentication method used when downloading the certificate. Allowed values: NONE, BASIC.",
+          "enum": [
+            "NONE",
+            "BASIC"
+          ],
+          "example": "BASIC"
+        },
+        "authenticationOptions": {
+          "type": "object",
+          "description": "BASIC authentication credentials used when authenticationType is BASIC.",
+          "properties": {
+            "username": {
+              "type": "string",
+              "description": "Username for BASIC authentication.",
+              "example": "zebra"
+            },
+            "password": {
+              "type": "string",
+              "description": "Password for BASIC authentication.",
+              "example": "zebra"
+            }
+          }
+        },
+        "pfxPassword": {
+          "type": "string",
+          "description": "Password for the PFX certificate file.",
+          "example": "abcd12345"
+        }
+      },
+      "required": [
+        "name",
+        "type",
+        "url"
+      ]
+    }
+  },
+  "required": [
+    "command",
+    "command_id",
+    "payload"
+  ],
+  "examples": [
+    {
+      "command": "set_updateCertificate",
+      "command_id": "abcd1324",
+      "payload": {
+        "name": "reader",
+        "type": "client",
+        "url": "https://10.117.229.15/reader.pfx",
+        "authenticationType": "BASIC",
+        "authenticationOptions": {
+          "username": "zebra",
+          "password": "zebra"
+        },
+        "pfxPassword": "abcd12345"
+      }
+    }
+  ],
+  "x-examples": {
+    "example-1": {
+      "command": "set_updateCertificate",
+      "command_id": "abcd1324",
+      "payload": {
+        "name": "reader",
+        "type": "client",
+        "url": "https://10.117.229.15/reader.pfx",
+        "authenticationType": "BASIC",
+        "authenticationOptions": {
+          "username": "zebra",
+          "password": "zebra"
+        },
+        "pfxPassword": "abcd12345"
+      }
+    }
+  }
+}

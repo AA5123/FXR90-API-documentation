@@ -1,0 +1,18 @@
+title: set_autostartUserapp
+type: object
+description: configure auto start settings for userapp
+properties:
+  appname:
+    type: string
+    description: Application name. For REST, the application is identified by the
+      appname path parameter; for MQTT, the application is identified by the appname
+      payload field.
+    example: userapp name
+  autostart:
+    type: boolean
+    default: true
+    description: Whether the application should start automatically when the reader
+      starts.
+required:
+- appname
+- autostart

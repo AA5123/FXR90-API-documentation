@@ -1,0 +1,5 @@
+title: get_network
+type: object
+description: Retrieves reader network configuration. No payload fields are required.
+examples:
+- {}

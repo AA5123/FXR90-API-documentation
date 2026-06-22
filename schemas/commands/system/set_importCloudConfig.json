@@ -1,0 +1,216 @@
+{
+  "title": "Set-ImportCloudConfigCommand",
+  "x-stoplight": {
+    "id": "zyc7w3e34ge07"
+  },
+  "type": "object",
+  "description": "Import Cloud Configuration",
+  "examples": [
+    {
+      "command": "set_importCloudConfig",
+      "command_id": "abcd1324",
+      "payload": {
+        "endpointConfig": {
+          "control": {
+            "commandResponse": {
+              "connections": [
+                {
+                  "description": "MQTT_TEST",
+                  "name": "MQTT_TEST",
+                  "options": {
+                    "additional": {
+                      "cleanSession": true,
+                      "clientId": "FX9600FCC017",
+                      "debug": false,
+                      "keepAlive": 60,
+                      "qos": 0,
+                      "reconnectDelay": 1,
+                      "reconnectDelayMax": 5
+                    },
+                    "enableSecurity": false,
+                    "endpoint": {
+                      "hostName": "broker.emqx.io",
+                      "port": 1883,
+                      "protocol": "tcp"
+                    },
+                    "publishTopic": [
+                      "FX9600FCC017/rsp"
+                    ],
+                    "security": {
+                      "CACertificateFileLocation": "/home/root/broker.emqx.io-ca.crt",
+                      "installedCertificateName": "Server",
+                      "installedCertificateType": "server",
+                      "keyAlgorithm": "RS256",
+                      "keyFormat": "PEM",
+                      "verifyHostName": false,
+                      "verifyPeer": false
+                    },
+                    "subscribeTopic": [
+                      "FX9600FCC017/cmd"
+                    ]
+                  },
+                  "type": "mqtt"
+                }
+              ],
+              "enableLocalRest": true
+            }
+          },
+          "data": {
+            "event": {
+              "connections": [
+                {
+                  "additionalOptions": {
+                    "batching": null,
+                    "retention": {
+                      "maxEventRetentionTimeInMin": 500,
+                      "maxNumEvents": 150000,
+                      "throttle": 500
+                    }
+                  },
+                  "description": "MQTT_TEST",
+                  "name": "MQTT_TEST",
+                  "options": {
+                    "additional": {
+                      "cleanSession": true,
+                      "clientId": "FX9600FCC017",
+                      "debug": false,
+                      "keepAlive": 60,
+                      "qos": 0,
+                      "reconnectDelay": 1,
+                      "reconnectDelayMax": 5
+                    },
+                    "enableSecurity": false,
+                    "endpoint": {
+                      "hostName": "broker.emqx.io",
+                      "port": 1883,
+                      "protocol": "tcp"
+                    },
+                    "publishTopic": [
+                      "FX9600FCC017/tevents"
+                    ],
+                    "security": {
+                      "CACertificateFileLocation": "/home/root/broker.emqx.io-ca.crt",
+                      "installedCertificateName": "Server",
+                      "installedCertificateType": "server",
+                      "keyAlgorithm": "RS256",
+                      "keyFormat": "PEM",
+                      "verifyHostName": false,
+                      "verifyPeer": false
+                    },
+                    "subscribeTopic": []
+                  },
+                  "type": "mqtt"
+                }
+              ]
+            }
+          },
+          "management": {
+            "commandResponse": {
+              "connections": [
+                {
+                  "description": "MQTT_TEST",
+                  "name": "MQTT_TEST",
+                  "options": {
+                    "additional": {
+                      "cleanSession": true,
+                      "clientId": "FX9600FCC017",
+                      "debug": false,
+                      "keepAlive": 60,
+                      "qos": 0,
+                      "reconnectDelay": 1,
+                      "reconnectDelayMax": 5
+                    },
+                    "enableSecurity": false,
+                    "endpoint": {
+                      "hostName": "broker.emqx.io",
+                      "port": 1883,
+                      "protocol": "tcp"
+                    },
+                    "publishTopic": [
+                      "FX9600FCC017/rsp"
+                    ],
+                    "security": {
+                      "CACertificateFileLocation": "/home/root/broker.emqx.io-ca.crt",
+                      "installedCertificateName": "Server",
+                      "installedCertificateType": "server",
+                      "keyAlgorithm": "RS256",
+                      "keyFormat": "PEM",
+                      "verifyHostName": false,
+                      "verifyPeer": false
+                    },
+                    "subscribeTopic": [
+                      "FX9600FCC017/cmd"
+                    ]
+                  },
+                  "type": "mqtt"
+                }
+              ],
+              "enableLocalRest": true
+            },
+            "event": {
+              "connections": [
+                {
+                  "description": "MQTT_TEST",
+                  "name": "MQTT_TEST",
+                  "options": {
+                    "additional": {
+                      "cleanSession": true,
+                      "clientId": "FX9600FCC017",
+                      "debug": false,
+                      "keepAlive": 60,
+                      "qos": 0,
+                      "reconnectDelay": 1,
+                      "reconnectDelayMax": 5
+                    },
+                    "enableSecurity": false,
+                    "endpoint": {
+                      "hostName": "broker.emqx.io",
+                      "port": 1883,
+                      "protocol": "tcp"
+                    },
+                    "publishTopic": [
+                      "FX9600FCC017/mevents"
+                    ],
+                    "subscribeTopic": []
+                  },
+                  "type": "mqtt"
+                }
+              ]
+            }
+          }
+        }
+      }
+    }
+  ],
+  "properties": {
+    "command": {
+      "type": "string",
+      "description": "The value for the key command must be set_importCloudConfig\n",
+      "x-stoplight": {
+        "id": "rstrf2l3ux7hy"
+      },
+      "enum": [
+        "set_importCloudConfig"
+      ]
+    },
+    "command_id": {
+      "type": "string",
+      "example": "abcd1324",
+      "description": "A unique ID that will be echoed back in the command response by the reader.",
+      "x-stoplight": {
+        "id": "f1zuf4su6sa28"
+      }
+    },
+    "payload": {
+      "$ref": "../../references/request_payload/importCloudConfigReq.yaml",
+      "x-stoplight": {
+        "id": "2uswebodr7z20"
+      }
+    }
+  },
+  "required": [
+    "command",
+    "command_id",
+    "payload"
+  ]
+}

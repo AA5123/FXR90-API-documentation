@@ -1,0 +1,101 @@
+{
+  "Set BLE Configuration": {
+    "enable_ble": "Enable BLE scanning with the required ble.enable field.",
+    "enable_with_interval": "Enable BLE scanning and set the scan interval.",
+    "enable_with_rssi_filter": "Enable BLE scanning with a minimum RSSI filter.",
+    "enable_with_protocols": "Enable BLE scanning with protocol-specific filters and service UUID filters.",
+    "disable_ble": "Disable BLE scanning."
+  },
+  "Start RFID Inventory or BLE scan": {
+    "Default start (RFID only)": "Starts RFID inventory with default settings. Since no scanType is provided, it defaults to RFID-only.",
+    "Start with state persistence disabled": "Starts inventory with doNotPersistState set to false, allowing the reader to persist the state.",
+    "Start with Impinj Gen2X": "Starts RFID inventory with Impinj Gen2X feature enabled.",
+    "Start BLE scan only": "Starts BLE scanning only. Requires prior BLE configuration using set_bleConfig.",
+    "Start RFID scan only": "Starts RFID inventory explicitly using scanType = ['rfid'].",
+    "Start BLE and RFID scan": "Starts both BLE scanning and RFID inventory simultaneously."
+  },
+  "Stop RFID Inventory or BLE scan": {
+    "Stop RFID (default)": "Stops RFID inventory using the default behaviour when no scanType is provided.",
+    "Stop RFID explicitly": "Stops RFID inventory using scanType = ['rfid'].",
+    "Stop BLE only": "Stops BLE scanning only. RFID inventory continues.",
+    "Stop BLE and RFID": "Stops both BLE scanning and RFID inventory."
+  },
+  "Get rxSawFilter status": {
+    "Get current status": "Retrieves whether the rxSawFilter is currently enabled or disabled."
+  },
+  "Enable or disable rxSawFilter": {
+    "Disable rxSawFilter": "Disables the rxSawFilter by setting preSelection to false.",
+    "Enable rxSawFilter": "Enables the rxSawFilter by setting preSelection to true."
+  },
+  "Pass-through command": {
+    "Send mode command to component": "Sends a pass-through command to the specified component to control or query its operating mode.",
+    "Send status command to component": "Sends a pass-through command to the specified component to request its current status."
+  },
+  "Get Cable Loss Compensation": {
+    "Get cable loss settings": "Retrieves the current cable loss compensation values for all antenna ports."
+  },
+  "Get Status": {
+    "REST-aligned status response": "Returns reader operational statistics using the REST status response shape inside the MQTT response payload."
+  },
+  "Get_Config": {
+    "REST-aligned configuration": "Returns reader configuration using the REST configuration response shape inside the MQTT response payload."
+  },
+  "Get Version": {
+    "REST-aligned version response": "Returns reader component version information using the REST version response shape inside the MQTT response payload."
+  },
+  "Set the Reader Configuration": {
+    "set_config_data_mqtt_async": "Configures an MQTT data endpoint with async retention and batching options.",
+    "set_config_data_aws": "Configures an AWS IoT MQTT data endpoint with certificate-based security.",
+    "set_config_data_azure_mqtt": "Configures an MQTT data endpoint using the Azure-style MQTT example from the REST reference.",
+    "set_config_data_clear": "Clears all configured data event endpoint connections.",
+    "set_config_data_httpPost": "Configures an HTTP POST data event endpoint.",
+    "set_config_data_mqtt": "Configures a public MQTT data endpoint for tag data publishing.",
+    "set_config_data_tcp_ip": "Configures a TCP/IP server data endpoint.",
+    "set_config_data_websocket": "Configures a WebSocket data event endpoint.",
+    "set_config_global_batching": "Updates global batching settings for data events.",
+    "set_config_global_retention": "Updates global retention settings for retained data events.",
+    "set_config_management_events": "Updates management event, warning, error, and heartbeat settings.",
+    "set_config_gpio_led": "Updates GPIO and LED event-action configuration."
+  },
+  "Set-ImportCloudConfigCommand": {
+    "set_importCloudConfig": "Imports control, data, and management cloud endpoint configuration using the REST cloudConfig example."
+  },
+  "Set-ImportCloudConfig-Response": {
+    "Cloud config import success": "Returns an empty payload when the cloud endpoint configuration import succeeds."
+  },
+  "Set Cable Loss Compensation": {
+    "Set ports 1 and 2 cable loss": "Sets cable length and cable loss per hundred feet for antenna ports 1 and 2.",
+    "Set ports 3 and 4 cable loss": "Sets cable length and cable loss per hundred feet for antenna ports 3 and 4."
+  },
+  "Get Reader Capabilities Response": {
+    "Retrieve reader capabilities": "Returns the list of supported capabilities on the current reader, including antennas, supported endpoints, network interfaces, and feature flags."
+  },
+  "Change Reader Password": {
+    "Change password for user": "Changes the password for the specified user using the current and new password values."
+  },
+  "Set Impinj Gen2X Configuration": {
+    "Enable FastID": "Enables the FastID feature on the reader.",
+    "Disable FastID": "Disables the FastID feature on the reader.",
+    "Protect tag": "Enables tag protection for the specified tag using the provided password.",
+    "Unprotect tag": "Disables tag protection for the specified tag.",
+    "Enable protect read": "Enables tag visibility protection mode using the provided password.",
+    "Disable protect read": "Disables tag visibility protection mode.",
+    "Enable TagFocus": "Enables TagFocus mode to improve tag read performance.",
+    "Disable TagFocus": "Disables TagFocus mode.",
+    "Quiet tags": "Applies basic quieting to the specified tags to suppress their responses.",
+    "Unquiet tags": "Restores the specified tags from quiet state.",
+    "Advanced quiet tags": "Applies advanced quieting using preSelect and tagQuietMasks conditions.",
+    "Advanced unquiet tags": "Removes advanced quieting and restores tag communication based on defined conditions."
+  },
+  "Get Impinj Gen2X Response": {
+    "Empty configuration": "Returns an empty object when no Impinj Gen2X configuration has been set on the reader.",
+    "FastID configured": "Returns the FastID configuration when the FastID feature is enabled.",
+    "TagFocus configured": "Returns the TagFocus configuration when the feature is enabled."
+  },
+  "Get App LED Response": {
+    "Retrieve LED status": "Returns the current status of the application LED on the reader."
+  },
+  "Get Logs": {
+    "Retrieve logging configuration": "Returns the logging configuration of the reader, including component log levels and radio packet logging status."
+  }
+}

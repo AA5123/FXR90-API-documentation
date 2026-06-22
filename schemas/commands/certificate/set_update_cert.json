@@ -1,0 +1,65 @@
+{
+  "title": "Update Certificate",
+  "x-stoplight": {
+    "id": "gk4nxg46rugqz"
+  },
+  "type": "object",
+  "description": "Update the certificate on the reader.",
+  "properties": {
+    "command": {
+      "type": "string",
+      "enum": [
+        "set_updateCertificate"
+      ],
+      "example": "set_updateCertificate",
+      "description": "The value for the key command must be set_updateCertificate"
+    },
+    "command_id": {
+      "type": "string",
+      "example": "abcd1324",
+      "description": "A unique ID that will be echoed back in the command response by the reader."
+    },
+    "payload": {
+      "$ref": "../../references/request_payload/install_certificate_command.yaml"
+    }
+  },
+  "required": [
+    "command",
+    "command_id",
+    "payload"
+  ],
+  "examples": [
+    {
+      "command": "set_updateCertificate",
+      "command_id": "abcd1324",
+      "payload": {
+        "name": "reader",
+        "type": "client",
+        "url": "https://10.117.229.15/reader.pfx",
+        "authenticationType": "BASIC",
+        "authenticationOptions": {
+          "username": "zebra",
+          "password": "zebra"
+        },
+        "pfxPassword": "abcd12345"
+      }
+    }
+  ],
+  "x-examples": {
+    "example-1": {
+      "command": "set_updateCertificate",
+      "command_id": "abcd1324",
+      "payload": {
+        "name": "reader",
+        "type": "client",
+        "url": "https://10.117.229.15/reader.pfx",
+        "authenticationType": "BASIC",
+        "authenticationOptions": {
+          "username": "zebra",
+          "password": "zebra"
+        },
+        "pfxPassword": "abcd12345"
+      }
+    }
+  }
+}
