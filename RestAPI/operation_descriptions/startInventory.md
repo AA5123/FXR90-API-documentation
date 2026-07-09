@@ -2,14 +2,6 @@ The `PUT /cloud/start` REST endpoint starts RFID inventory, BLE scanning, or bot
 
 By default, an empty request body starts RFID inventory only. Use the `scanType` field to explicitly start BLE, RFID, or both together. Optional flags allow you to apply a previously saved Impinj Gen2X configuration or control whether the start state persists across reboots.
 
-**Use this endpoint to:**
-
-- Start RFID inventory using the currently configured operating mode
-- Start BLE scanning using the currently configured BLE settings
-- Start RFID and BLE scanning together in a single inventory session
-- Apply a previously saved Impinj Gen2X configuration when starting RFID inventory
-- Control whether the reader automatically resumes scanning after reboot
-
 ### Endpoint Details
 
 | Property | Value |
@@ -17,13 +9,10 @@ By default, an empty request body starts RFID inventory only. Use the `scanType`
 | Pattern Name | Scan Control - Start |
 | Communication Type | Client to Device (HTTP request/response) |
 | Applies To | FXR90 Series |
-| MQTT Command | `start` |
 | Related Endpoints | `PUT /cloud/stop`, `PUT /cloud/ble-config`, `PUT /cloud/impinjGen2X`, `PUT /cloud/mode` |
 | Authentication | Bearer token (`Authorization: Bearer <token>`) |
 | Content-Type | `application/json` |
 | Supported Scan Types | `rfid`, `ble`, or both combined |
-
----
 
 ## 2. Before You Begin
 
@@ -36,8 +25,6 @@ Make sure the relevant scanners are configured before sending this request.
 | RFID configuration | Operating mode must be configured via `PUT /cloud/mode` (or default) before starting RFID inventory. |
 | BLE configuration | If starting BLE, the BLE scanner must be configured via `PUT /cloud/ble-config` with `ble.enable: true`. |
 | Gen2X configuration | If using `applyImpinjGen2X: true`, the Gen2X configuration must be saved via `PUT /cloud/impinjGen2X` beforehand. |
-
----
 
 ## 3. What Happens After Start
 
@@ -64,19 +51,3 @@ The `doNotPersistState` field controls whether the reader resumes scanning autom
 
 > Tip: Use `doNotPersistState: true` for one-time or debugging sessions where automatic resume after reboot is not desired.
 
----
-
-## 4. Rules and Constraints
-
-### Request Format
-
-- HTTP method must be `PUT`.
-- `Content-Type` header must be `application/json`.
-- `Authorization` header must contain a valid bearer token.
-- Request body may be empty (`{}`) or contain optional fields.
-
-### Field-Level Rules
-
-- `scanType` - array of strings. Allowed values: `"rfid"`, `"ble"`.
-- `applyImpinjGen2X` - boolean.
-- `doNotPersistState` - boolean.

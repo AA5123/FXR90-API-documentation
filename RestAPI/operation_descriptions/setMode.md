@@ -1,13 +1,5 @@
 The `PUT /cloud/mode` REST endpoint configures the reader's operating mode using the same `operatingMode.v1` payload shape supported by the MQTT `set_mode` command.
 
-Use this endpoint to:
-
-- Switch between `SIMPLE`, `INVENTORY`, `PORTAL`, `CONVEYOR`, `CUSTOM`, and `DIRECTIONALITY` modes
-- Configure antennas or beams, transmit power, and RF environment
-- Configure mode-specific settings such as inventory intervals, portal triggers, and directionality settings
-- Configure Gen2 query/select/access operations
-- Configure report filtering, RSSI filtering, metadata, and radio start/stop conditions
-
 ## 2. Endpoint Details
 
 | Property | Value |
@@ -15,7 +7,6 @@ Use this endpoint to:
 | Pattern Name | Operating Mode Configuration |
 | Communication Type | Client to Device (HTTP request/response) |
 | Applies To | FXR90 Series |
-| MQTT Command | `set_mode` |
 | REST Endpoint | `PUT /cloud/mode` |
 | Request Schema | `operatingMode.v1` |
 | Related Endpoints | `GET /cloud/mode`, `PUT /cloud/start`, `PUT /cloud/stop`, `GET /cloud/config` |

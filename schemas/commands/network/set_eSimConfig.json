@@ -21,10 +21,16 @@
       "properties": {
         "operation": {
           "type": "string",
+          "description": "eSIM profile operation to perform.",
+          "enum": [
+            "enable",
+            "disable"
+          ],
           "example": "enable"
         },
         "profileNickName": {
           "type": "string",
+          "description": "Nickname of the eSIM profile to apply the operation to.",
           "example": "gnd1"
         }
       }

@@ -1,9 +1,9 @@
 get:
   tags:
   - userapp
-  summary: List user applications
+  summary: List Installed Apps
   description: MQTT API :-  get_user_apps <br> Lists all installed user applications
-  operationId: getUserapps
+  operationId: getUserApps
   responses:
     '200':
       description: OK

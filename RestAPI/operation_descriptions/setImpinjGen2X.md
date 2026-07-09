@@ -7,13 +7,6 @@ The `PUT /cloud/impinjGen2X` REST endpoint configures Impinj Gen2X proprietary R
 - TagFocus to suppress already-read tags during dense inventory
 - TagQuieting (basic or advanced) to silence specific tags by EPC or by Gen2 select masks
 
-**Use this endpoint to:**
-
-- Improve inventory performance in dense or high-duplicate tag environments
-- Protect sensitive tags from unauthorized reads or writes
-- Reduce duplicate reporting by silencing already-inventoried tags
-- Apply advanced Gen2 select pre-conditions for state-aware tag quieting
-
 ### Endpoint Details
 
 | Property | Value |
@@ -21,7 +14,6 @@ The `PUT /cloud/impinjGen2X` REST endpoint configures Impinj Gen2X proprietary R
 | Pattern Name | Impinj Gen2X Configuration Update |
 | Communication Type | Client to Device (HTTP request/response) |
 | Applies To | FXR90 Series |
-| MQTT Command | `set_impinjGen2X` |
 | REST Endpoint | `PUT /cloud/impinjGen2X` |
 | Related Endpoints | `GET /cloud/impinjGen2X`, `PUT /cloud/start`, `PUT /cloud/stop` |
 | Authentication | Bearer token (`Authorization: Bearer <token>`) |
@@ -35,8 +27,6 @@ The `PUT /cloud/impinjGen2X` REST endpoint configures Impinj Gen2X proprietary R
 | Supported Select Targets | S0, S1, S2, S3, SL |
 | Supported Tag Quiet Masks | S0A, S0B, S1A, S1B, S2A, S2B, S3A, S3B, SL_ASSERT, SL_DEASSERT |
 | Mutually Exclusive Features | FastID, TagFocus, TagQuieting (only one reader-scoped feature active at a time) |
-
----
 
 ## 2. Before You Begin
 
@@ -54,8 +44,6 @@ Decide which Gen2X feature you need to configure before sending this request. Yo
 | Inventory state | `PUT /cloud/impinjGen2X` should be called **before** starting inventory. Stop any active inventory first by calling `PUT /cloud/stop`. |
 | Activation | The saved configuration is **not active** until you call `PUT /cloud/start` with `applyImpinjGen2X: true` in the request body. |
 
----
-
 ## 3. Choosing a Gen2X Feature
 
 The Gen2X feature you select determines the reader's behavior during inventory. Choose based on your operational goal.
@@ -70,8 +58,6 @@ The Gen2X feature you select determines the reader's behavior during inventory. 
 
 > Mutually exclusive: Only one of `fastID`, `tagFocus`, or `tagQuieting` can be active at a time. `tagProtect` can coexist with any one of them because it operates at the tag level.
 
----
-
 ## 4. Choosing TagProtect Actions
 
 TagProtect operations either lock/unlock individual tags or temporarily allow the reader to see already-protected tags. Each action has specific field requirements.
@@ -84,8 +70,6 @@ TagProtect operations either lock/unlock individual tags or temporarily allow th
 | `disableTagVisibility` | Restores the default behavior where protected tags are hidden from the reader. | `password` | Reverts the effect of `enableTagVisibility`. |
 
 > Important: `enableTagProtection` and `disableTagProtection` are tag-specific (require `tagID`). `enableTagVisibility` and `disableTagVisibility` are reader-wide visibility toggles.
-
----
 
 ## 5. Choosing TagQuieting Strategy
 
@@ -115,8 +99,6 @@ Advanced quieting uses Gen2 select pre-conditions to silence tags based on memor
 
 > Important: Use `basic` when you have a discrete list of EPCs. Use `advanced` when filtering by memory content, session state, or complex multi-step Gen2 select conditions.
 
----
-
 ## 6. Choosing FastID and TagFocus
 
 These two reader-scoped features improve inventory performance but cannot be combined.
@@ -138,8 +120,6 @@ These two reader-scoped features improve inventory performance but cannot be com
 | `enabled: false` | Standard inventory behavior; tags can be reported multiple times. |
 
 **Use TagFocus when:** You operate portals, conveyors, or other scenarios with many duplicate reads of the same tag set and want unique-tag reporting.
-
----
 
 ## 7. Applying the Configuration
 
@@ -189,48 +169,3 @@ Content-Type: application/json
 
 > Persistence: The reader stores the last saved configuration and restores it across reboots and reconnects. The configuration is only applied during inventory when `applyImpinjGen2X: true` is sent in the `PUT /cloud/start` request body.
 
----
-
-## 8. Rules and Constraints
-
-### Inventory State
-
-- `PUT /cloud/impinjGen2X` cannot modify configuration while an active inventory is running. Stop inventory first by calling `PUT /cloud/stop`.
-- Configuration changes only take effect on the next `PUT /cloud/start` call that includes `applyImpinjGen2X: true` in the request body.
-
-### Request Format
-
-- HTTP method must be `PUT`.
-- `Content-Type` header must be `application/json`.
-- `Authorization` header must contain a valid bearer token.
-- Request body must contain at least one of: `fastID`, `tagProtect`, `tagFocus`, `tagQuieting`. An empty body returns `422 Unprocessable Entity`.
-
-### Mutual Exclusivity
-
-- Only **one** of `fastID`, `tagFocus`, or `tagQuieting` may be active at a time. Sending more than one reader-scoped feature in a single request returns `422 Unprocessable Entity`.
-- `tagProtect` is tag-scoped and may be configured alongside any one reader-scoped feature.
-
-### TagProtect
-
-- `password` must be exactly **8 hex characters (32 bits)** for all TagProtect actions.
-- `tagID` is required for `enableTagProtection` and `disableTagProtection`. It must be a valid EPC hex string.
-- `enableShortRange` is optional and only applies to `enableTagProtection`.
-
-### TagQuieting (Basic)
-
-- `tagIDs` array supports a **maximum of 31 EPCs** per request.
-- Each EPC must be a valid hex string matching the tag's EPC memory bank content.
-- `basic` and `advanced` sub-objects are mutually exclusive within `tagQuieting`.
-
-### TagQuieting (Advanced)
-
-- `preSelect[].mask.value` must be a valid hex string matching `length` (bits).
-- `mask.bank` must be one of `EPC`, `TID`, `USER`, or `RESERVED`.
-- `mask.pointer` is a **bit position** (not a word offset).
-- `tagQuietMasks` values must come from the supported session-flag enum list.
-
-### Response Handling
-
-- A `200 OK` response indicates the configuration was saved successfully on the reader.
-- A `422 Unprocessable Entity` response indicates the request body failed validation. Inspect the response body for the specific error reason.
-- A `500 Internal Server Error` response indicates a reader-side failure. Retry after verifying reader health.

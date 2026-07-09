@@ -4,7 +4,7 @@ The `GET /cloud/app-led` REST endpoint retrieves the current state of the applic
 
 This endpoint returns:
 
-- The application LED status (`DEFAULT` or `NOT_DEFAULT`)
+- The application LED status (`DEFAULT` or `NON_DEFAULT`)
 
 No request body is required.
 
@@ -13,14 +13,9 @@ No request body is required.
 | Property | Value |
 |---|---|
 | REST Endpoint | `GET /cloud/app-led` |
-| Operation ID | `getAppled` |
 | Communication Type | Client to Device (HTTP request/response) |
 | Applies To | FXR90 |
-| MQTT Command | `get_appled` |
-| MQTT Equivalent | `get_appled` |
 | Authentication | Bearer token (`Authorization: Bearer <token>`) |
-| Supported Response Sections | JSON response body |
-| Supported API Versions | V1.0 |
 
 ## 3. When to Use This Endpoint
 
@@ -34,4 +29,4 @@ Key fields to check in the response:
 
 | Field | What to Check | Why It Matters |
 |---|---|---|
-| `status` | Is it `DEFAULT` or `NOT_DEFAULT`? | `NOT_DEFAULT` indicates the LED has been overridden by the application; `DEFAULT` means it reflects normal reader status. |
+| `status` | Is it `DEFAULT` or `NON_DEFAULT`? | `NON_DEFAULT` indicates the LED has been overridden by the application; `DEFAULT` means it reflects normal reader status. |

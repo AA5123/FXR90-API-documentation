@@ -13,14 +13,9 @@ No request body is required.
 | Property | Value |
 |---|---|
 | REST Endpoint | `GET /cloud/hostName` |
-| Operation ID | `getHostName` |
 | Communication Type | Client to Device (HTTP request/response) |
 | Applies To | FXR90 |
-| MQTT Command | `get_hostname` |
-| MQTT Equivalent | `get_hostname` |
 | Authentication | Bearer token (`Authorization: Bearer <token>`) |
-| Supported Response Sections | JSON response body |
-| Supported API Versions | V1.0 |
 
 ## 3. When to Use This Endpoint
 

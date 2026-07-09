@@ -13,14 +13,9 @@ No request body is required.
 | Property | Value |
 |---|---|
 | REST Endpoint | `GET /cloud/networkInterfaces` |
-| Operation ID | `getNetworkinterfaces` |
 | Communication Type | Client to Device (HTTP request/response) |
 | Applies To | FXR90 |
-| MQTT Command | `get_networkInterfaces` |
-| MQTT Equivalent | `get_networkInterfaces` |
 | Authentication | Bearer token (`Authorization: Bearer <token>`) |
-| Supported Response Sections | JSON response body |
-| Supported API Versions | V1.0 |
 
 ## 3. When to Use This Endpoint
 

@@ -14,14 +14,9 @@ No request body is required.
 | Property | Value |
 |---|---|
 | REST Endpoint | `GET /cloud/logs` |
-| Operation ID | `getLogs` |
 | Communication Type | Client to Device (HTTP request/response) |
 | Applies To | FXR90 |
-| MQTT Command | `get_logs` |
-| MQTT Equivalent | `get_logs` |
 | Authentication | Bearer token (`Authorization: Bearer <token>`) |
-| Supported Response Sections | JSON response body |
-| Supported API Versions | V1.0 |
 
 ## 3. When to Use This Endpoint
 

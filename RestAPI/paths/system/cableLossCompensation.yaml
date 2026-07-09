@@ -1,9 +1,10 @@
 get:
   tags:
   - System
-  summary: Retrieves the cableLossCompensation
-  description: MQTT API :-  get_cableLossCompensation <br> Gets the Reader Cable Loss Compensation. Includes Cable Length and Cable Loss per Hundred Feet
-  operationId: getCablelosscompensation
+  summary: Get Cable Loss Compensation
+  description: MQTT API :-  get_cableLossCompensation <br> Gets the Reader Cable Loss
+    Compensation. Includes Cable Length and Cable Loss per Hundred Feet
+  operationId: getCableLossCompensation
   responses:
     '200':
       description: OK
@@ -29,9 +30,10 @@ get:
 put:
   tags:
   - System
-  summary: Sets the cableLossCompensation
-  description: MQTT API :-  set_cableLossCompensation <br> Sets the Reader Cable Loss Compensation. Includes Cable Length and Cable Loss per Hundred Feet
-  operationId: setCablelosscompensation
+  summary: Set Cable Loss Compensation
+  description: MQTT API :-  set_cableLossCompensation <br> Sets the Reader Cable Loss
+    Compensation. Includes Cable Length and Cable Loss per Hundred Feet
+  operationId: setCableLossCompensation
   requestBody:
     content:
       application/json:

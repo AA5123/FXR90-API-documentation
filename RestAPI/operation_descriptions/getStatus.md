@@ -21,14 +21,9 @@ The `ble` section is present only when BLE is supported and its status is availa
 | Property | Value |
 |---|---|
 | REST Endpoint | `GET /cloud/status` |
-| Operation ID | `getStatus` |
 | Communication Type | Client to Device (HTTP request/response) |
 | Applies To | FXR90 |
-| MQTT Command | `get_status` |
-| MQTT Equivalent | `get_status` |
 | Authentication | Bearer token (`Authorization: Bearer <token>`) |
-| Supported Response Sections | JSON response body |
-| Supported API Versions | V1.0 |
 
 ## 3. When to Use This Endpoint
 

@@ -13,14 +13,9 @@ No request body is required.
 | Property | Value |
 |---|---|
 | REST Endpoint | `GET /cloud/certificates` |
-| Operation ID | `getCertificates` |
 | Communication Type | Client to Device (HTTP request/response) |
 | Applies To | FXR90 |
-| MQTT Command | `get_certs` |
-| MQTT Equivalent | `get_certs` |
 | Authentication | Bearer token (`Authorization: Bearer <token>`) |
-| Supported Response Sections | JSON response body |
-| Supported API Versions | V1.0 |
 
 ## 3. When to Use This Endpoint
 
@@ -37,5 +32,5 @@ Key fields to check in the response:
 |---|---|---|
 | `name` | Is the expected certificate present? | Confirms the correct certificate is installed for TLS or authentication. |
 | `type` | What type of certificate is it? | Differentiates device, CA, and client certificates used for different purposes. |
-| `notValidAfter` | When does it expire? | Expired certificates will cause TLS handshake failures and connectivity loss. |
+| `validityEnd` | When does it expire? | Expired certificates will cause TLS handshake failures and connectivity loss. |
 | `serialNumber` | Does the serial match the expected certificate? | Verifies the exact certificate instance, useful for rotation audits. |

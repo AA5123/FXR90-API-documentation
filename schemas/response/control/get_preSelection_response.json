@@ -29,13 +29,14 @@
           "properties": {
             "preSelection": {
               "type": "string",
-              "description": "Indicates whether rxSawFilter preSelection is enabled or disabled.",
+              "description": "Current state of the rxSawFilter.",
+              "enum": [
+                "enabled",
+                "disabled"
+              ],
               "example": "disabled"
             }
-          },
-          "required": [
-            "preSelection"
-          ]
+          }
         },
         {
           "$ref": "../../references/response_payload/errors.yaml"

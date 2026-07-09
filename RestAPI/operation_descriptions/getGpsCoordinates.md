@@ -14,14 +14,9 @@ No request body is required. The returned values represent the most recent locat
 | Property | Value |
 |---|---|
 | REST Endpoint | `GET /cloud/readerLocation` |
-| Operation ID | `getGpsCoordinates` |
 | Communication Type | Client to Device (HTTP request/response) |
 | Applies To | FXR90 |
-| MQTT Command | `get_gpsCoordinates` |
-| MQTT Equivalent | `get_gpsCoordinates` |
 | Authentication | Bearer token (`Authorization: Bearer <token>`) |
-| Supported Response Sections | JSON response body |
-| Supported API Versions | V1.0 |
 
 ## 3. When to Use This Endpoint
 
@@ -37,4 +32,4 @@ Key fields to check in the response:
 |---|---|---|
 | `latitude` | Is a valid latitude value returned? | A null or zero value may indicate the reader does not have a GPS fix yet. |
 | `longitude` | Is a valid longitude value returned? | Combined with latitude, this identifies the reader's physical position. |
-| `altitude` | Is altitude data present? | Useful in multi-floor or elevated deployments where vertical position matters. |
+| `satellitesUsed` | How many satellites produced the fix? | A low satellite count indicates a weak fix and less reliable coordinates. |

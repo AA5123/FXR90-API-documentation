@@ -29,17 +29,6 @@
               "type": "boolean",
               "description": "Enable or disable the FastID feature.",
               "example": true
-            },
-            "tidSelector": {
-              "type": "string",
-              "description": "Optional TID word selector mask. When provided, only the specified TID word is embedded in the inventory response.",
-              "enum": [
-                "TID[0]",
-                "TID[1]",
-                "TID[2]",
-                "TID[3]"
-              ],
-              "example": "TID[0]"
             }
           },
           "required": [
@@ -152,7 +141,7 @@
   "examples": [
     {
       "command": "set_impinjGen2X",
-      "command_id": "gen2x-fastid-enable-001",
+      "command_id": "gen2x-set-001",
       "payload": {
         "fastID": {
           "enabled": true
@@ -161,7 +150,7 @@
     },
     {
       "command": "set_impinjGen2X",
-      "command_id": "gen2x-fastid-disable-001",
+      "command_id": "gen2x-set-001",
       "payload": {
         "fastID": {
           "enabled": false
@@ -170,7 +159,7 @@
     },
     {
       "command": "set_impinjGen2X",
-      "command_id": "gen2x-protect-tag-001",
+      "command_id": "gen2x-set-001",
       "payload": {
         "tagProtect": {
           "action": "enableTagProtection",
@@ -182,7 +171,7 @@
     },
     {
       "command": "set_impinjGen2X",
-      "command_id": "gen2x-unprotect-tag-001",
+      "command_id": "gen2x-set-001",
       "payload": {
         "tagProtect": {
           "action": "disableTagProtection",
@@ -193,7 +182,7 @@
     },
     {
       "command": "set_impinjGen2X",
-      "command_id": "gen2x-enable-protect-read-001",
+      "command_id": "gen2x-set-001",
       "payload": {
         "tagProtect": {
           "action": "enableTagVisibility",
@@ -203,7 +192,7 @@
     },
     {
       "command": "set_impinjGen2X",
-      "command_id": "gen2x-disable-protect-read-001",
+      "command_id": "gen2x-set-001",
       "payload": {
         "tagProtect": {
           "action": "disableTagVisibility",
@@ -213,7 +202,7 @@
     },
     {
       "command": "set_impinjGen2X",
-      "command_id": "gen2x-tagfocus-enable-001",
+      "command_id": "gen2x-set-001",
       "payload": {
         "tagFocus": {
           "enabled": true
@@ -222,7 +211,7 @@
     },
     {
       "command": "set_impinjGen2X",
-      "command_id": "gen2x-tagfocus-disable-001",
+      "command_id": "gen2x-set-001",
       "payload": {
         "tagFocus": {
           "enabled": false
@@ -231,7 +220,7 @@
     },
     {
       "command": "set_impinjGen2X",
-      "command_id": "gen2x-quiet-tags-001",
+      "command_id": "gen2x-set-001",
       "payload": {
         "tagQuieting": {
           "basic": {
@@ -246,7 +235,7 @@
     },
     {
       "command": "set_impinjGen2X",
-      "command_id": "gen2x-unquiet-tags-001",
+      "command_id": "gen2x-set-001",
       "payload": {
         "tagQuieting": {
           "basic": {
@@ -260,7 +249,7 @@
     },
     {
       "command": "set_impinjGen2X",
-      "command_id": "gen2x-advanced-quiet-001",
+      "command_id": "gen2x-set-001",
       "payload": {
         "tagQuieting": {
           "advanced": {
@@ -298,7 +287,7 @@
     },
     {
       "command": "set_impinjGen2X",
-      "command_id": "gen2x-advanced-unquiet-001",
+      "command_id": "gen2x-set-001",
       "payload": {
         "tagQuieting": {
           "advanced": {

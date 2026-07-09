@@ -16,14 +16,9 @@ No request body is required.
 | Property | Value |
 |---|---|
 | REST Endpoint | `GET /cloud/readerCapabilities` |
-| Operation ID | `getReaderCapabilities` |
 | Communication Type | Client to Device (HTTP request/response) |
 | Applies To | FXR90 |
-| MQTT Command | `get_readerCapabilities` |
-| MQTT Equivalent | `get_readerCapabilities` |
 | Authentication | Bearer token (`Authorization: Bearer <token>`) |
-| Supported Response Sections | JSON response body |
-| Supported API Versions | V1.0 |
 
 ## 3. When to Use This Endpoint
 
@@ -41,4 +36,4 @@ Key fields to check in the response:
 | `numGPIs` | How many GPI pins are available? | Sets the upper limit for GPI-based trigger inputs. |
 | `numGPOs` | How many GPO pins are available? | Sets the upper limit for GPO-driven outputs in workflows. |
 | `protocols` | Which RFID protocols are supported? | Determines which tag types can be read - e.g., GS1 Gen2, ISO 18000-63. |
-| `apiVersions` | Which API versions are supported? | Ensures compatibility between management software and the reader firmware. |
+| `apiSupported.versions` | Which API versions are supported? | Ensures compatibility between management software and the reader firmware. |
