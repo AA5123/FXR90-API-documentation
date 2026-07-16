@@ -21,9 +21,8 @@ Use this endpoint to:
 | Applies To | FXR90 |
 | Authentication | Bearer token (`Authorization: Bearer <token>`) |
 | Content-Type | `application/json` |
-| Related Endpoints | [startInventory](startInventory.md), [setBleConfig](setBleConfig.md), [getBleConfig](getBleConfig.md), [getMode](getMode.md), [getStatus](getStatus.md) |
 | Supported Operations | Stop RFID inventory, BLE scan, or both |
-| Supported API Versions | V1.0 |
+| Firmware Requirement | BLE requires reader build **4.0.11** or later. On earlier builds the `scanType` field is not available. |
 
 ## 3. Stop Behavior
 
@@ -33,6 +32,8 @@ Use this endpoint to:
 | `{ "scanType": ["rfid"] }` | Stops RFID inventory explicitly. BLE scanning continues if active. |
 | `{ "scanType": ["ble"] }` | Stops BLE scanning only. RFID inventory continues if active. |
 | `{ "scanType": ["ble", "rfid"] }` | Stops both BLE scanning and RFID inventory. |
+
+> Firmware requirement: BLE scanning — and with it the `scanType` field — is available from reader build **4.0.11** onward. On builds older than 4.0.11, `scanType` is not supported: send an empty body `{}`, which stops RFID inventory. Check the installed build with `GET /cloud/version` (`readerApplication`).
 
 ## 4. Before You Begin
 

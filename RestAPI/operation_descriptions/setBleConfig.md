@@ -30,13 +30,12 @@ Use this endpoint to:
 | Applies To | FXR90 |
 | Authentication | Bearer token (`Authorization: Bearer <token>`) |
 | Content-Type | `application/json` |
-| Related Endpoints | [getBleConfig](getBleConfig.md), [startInventory](startInventory.md), [stopInventory](stopInventory.md) |
 | Required Request Fields | `ble.enable` |
 | Supported BLE Protocols | iBeacon, AltBeacon, Eddystone (`URL`, `UID`, `EID`, `TLM`), Generic |
+| Firmware Requirement | BLE requires reader build **4.0.11** or later. On earlier builds this endpoint is not available. |
 | Supported Address Types | `public`, `random` |
 | RSSI Filter Range | `-127` to `0` dBm |
 | Scan Interval Minimum | 1 second |
-| Supported API Versions | V1.0 |
 
 ## 3. Before You Begin
 
